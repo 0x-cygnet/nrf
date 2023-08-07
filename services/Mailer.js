@@ -7,7 +7,7 @@ class Mailer extends helper.Mail {
     super();
 
     this.sgApi = sendgrid(keys.sendGridKey);
-    this.from_email = new helper.Email('REPLACE_WITH_YOUR_AUTHORIZED_SENDER');
+    this.from_email = new helper.Email('bloopsocket@gmail.com');
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients);
@@ -44,7 +44,7 @@ class Mailer extends helper.Mail {
     const request = this.sgApi.emptyRequest({
       method: 'POST',
       path: '/v3/mail/send',
-      body: this.toJSON(),
+      body: this.toJSON()
     });
 
     const response = await this.sgApi.API(request);
